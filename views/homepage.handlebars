@@ -1,10 +1,9 @@
-{{#each blogs as |blog| }}
-<div class="row">
-    <p>Created by {{name}} on {{ format_date date_created}}</p>
+<div>
+  {{#each blogs as |blog| }}
 
-    <p>
-      {{blog.description}}
-    </p>
+  <ul>
+    {{> blog-content}}
+  </ul>
 
+  {{/each}}
 </div>
-{{/each}}

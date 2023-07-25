@@ -19,13 +19,13 @@ THEN I am presented with the homepage, which includes existing blog posts if any
   </header>
   <div>
       <nav>
-        <a href="/">Home</a>
-        <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
+        <!-- Conditionally render login or logout links -->
+        <a href="/">Home</a>
         <a href="/dashboard">Dashboard</a> |
-        <button class="no-button" id="logout">logout</button>
+        <button class="no-button" id="logout">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">Login</a>
         {{/if}}
       </nav>
     </div>
@@ -41,7 +41,7 @@ THEN I am presented with the homepage, which includes existing blog posts if any
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+  <script src="../../public/js/logout.js"></script>
   {{/if}}
 </body>
 

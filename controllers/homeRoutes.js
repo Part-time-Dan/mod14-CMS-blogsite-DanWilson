@@ -4,9 +4,9 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all blogposts and render
+    // Get all blogs and render on homepage without Auth
     const blogData = await Blog.findAll({
-      attributes: [ 'id', 'title'],
+      attributes: [ 'id', 'title', 'date_created'],
     });
 
     // Serialize data so the template can read it
@@ -22,27 +22,26 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/blog/:id', async (req, res) => {
-//   try {
-//     const blogData = await Blog.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
+// 
 
-//     const blog = blogData.get({ plain: true });
+router.get('/blog/:id', async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id, {
+      attributes: ['id', 'title', 'description'],
+    });
 
-//     res.render('blogpost', {
-//       ...blog,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    const blog = blogData.get({ plain: true });
+
+    res.render('blog', {
+      ...blog,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// 
 
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
@@ -67,7 +66,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('/');
     return;
   }
 
