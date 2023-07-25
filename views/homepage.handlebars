@@ -1,12 +1,10 @@
-{{#each projects as |project| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <p>Created by {{user.name}} on {{format_date blog.date_created}}</p>
-  </div>
-  <div class="col-md-7">
+{{#each blogs as |blog| }}
+<div class="row">
+    <p>Created by {{name}} on {{ format_date date_created}}</p>
+
     <p>
       {{blog.description}}
     </p>
-  </div>
+
 </div>
 {{/each}}

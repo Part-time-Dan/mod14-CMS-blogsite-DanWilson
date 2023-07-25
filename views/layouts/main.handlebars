@@ -10,17 +10,24 @@
 </head>
 
 <body>
+
+{{!-- WHEN I visit the site for the first time
+THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in --}}
+
   <header>
-    <h1>Check H1 Header</h1>
+    <h1>Homepage (main.handlebars)</h1>
   </header>
   <div>
-      <!-- Conditionally render login or logout links -->
-      {{#if logged_in}}
-      <a href="/profile">profile</a> |
-      <button class="no-button" id="logout">logout</button>
-      {{else}}
-      <a href="/login">login</a>
-      {{/if}}
+      <nav>
+        <a href="/">Home</a>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/dashboard">Dashboard</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+      </nav>
     </div>
 
     <main class="blog-container">
