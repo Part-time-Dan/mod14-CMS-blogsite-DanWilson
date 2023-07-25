@@ -2,13 +2,13 @@ const newFormHandler = async (event) => {
     event.preventDefault();
   
     // create html classes
-    const name = document.querySelector('#blogpost-name').value.trim();
+    const title = document.querySelector('#blogpost-name').value.trim();
     const description = document.querySelector('#blogpost-desc').value.trim();
   
-    if (name && description) {
+    if (title && description) {
       const response = await fetch(`/api/projects`, {
         method: 'POST',
-        body: JSON.stringify({ name, needed_funding, description }),
+        body: JSON.stringify({ title, description }),
         headers: {
           'Content-Type': 'application/json',
         },
