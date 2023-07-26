@@ -1,24 +1,31 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Blog } = require('../../models');
 
-router.post('/', async (req, res) => {
-  try {
-    const userData = await User.create(req.body);
+// create user
+// router.post('/', async (req, res) => {
+//   try {
+//     const userData = await User.create({
+//       name: req.body.name,
+//       password: req.body.password,
+//     });
 
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+//     req.session.save(() => {
+//       req.session.user_id = userData.id;
+//       req.session.name = userData.name;
+//       req.session.logged_in = true;
 
-      res.status(200).json(userData);
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+//       res.status(200).json(userData);
+//     });
+//   } catch (err) {
+//     console.log('Post route js4 used')
+//     res.status(400).json(err);
+//   }
+// });
 
+// login existing user
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { name: req.body.name } });
+    const userData = await User.findOne({ where: { user: req.body.name } });
 
     if (!userData) {
       res
@@ -32,7 +39,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Incorrect username or password, please try again' });
       return;
     }
 
@@ -44,6 +51,7 @@ router.post('/login', async (req, res) => {
     });
 
   } catch (err) {
+    console.log('post route js25 used')
     res.status(400).json(err);
   }
 });
@@ -57,5 +65,7 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+
 
 module.exports = router;

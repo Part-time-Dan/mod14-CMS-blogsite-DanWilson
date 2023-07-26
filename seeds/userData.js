@@ -1,6 +1,7 @@
 const { User } = require('../models');
 
-const blogContent = [
+const blogContent = 
+[
   {
     "name": "Chris",
     "email": "redfield@hotmail.com",
