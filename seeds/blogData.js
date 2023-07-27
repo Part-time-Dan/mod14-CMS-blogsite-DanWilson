@@ -15,7 +15,7 @@ const blogContent = [
     },
     {
       "title": "Update",
-      "description": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes.",
+      "description": "Still blogging!",
       "date_created": "6/30/2023",
       "user_id": 3,
     }

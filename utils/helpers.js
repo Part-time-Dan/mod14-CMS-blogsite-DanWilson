@@ -3,6 +3,4 @@ module.exports = {
       // Format date as MM/DD/YYYY
       return date.toLocaleDateString();
     },
-};
-  
-//  should I choose to add dates to the blog posts
+  };

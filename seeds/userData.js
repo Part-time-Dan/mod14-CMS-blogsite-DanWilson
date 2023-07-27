@@ -1,24 +1,28 @@
 const { User } = require('../models');
 
-const blogContent = 
+const userLogin = 
 [
   {
-    "name": "Chris",
+    "username": "Chris",
     "email": "redfield@hotmail.com",
     "password": "password12345"
   },
   {
-    "name": "Sheva",
+    "username": "Sheva",
     "email": "alomar@gmail.com",
     "password": "password12345"
   },
   {
-    "name": "Jill",
+    "username": "Jill",
     "email": "valentine@aol.com",
     "password": "password12345"
   }
 ]
 
-const userData = () => User.bulkCreate(blogContent);
+const userData = () => User.bulkCreate(userLogin, {
+    individualHooks: true,
+    returning: true,
+});
+
 
 module.exports = userData;
