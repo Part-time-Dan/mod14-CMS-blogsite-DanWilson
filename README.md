@@ -67,4 +67,7 @@ For additional license information, please follow the link: [MIT](https://choose
 [Heroku Deployment](https://dw-mvc-bloggy-ptd-0f7d5a1fecf6.herokuapp.com/)
 
 
-[Image-here](take-screenshot-of-Heroku-deployment)
+![mod14-homepage](https://github.com/Part-time-Dan/mod14-CMS-blogsite-DanWilson/assets/126934952/745dd4ec-7969-4757-b210-d78dec121190)
+
+
+![mod14-dashboard](https://github.com/Part-time-Dan/mod14-CMS-blogsite-DanWilson/assets/126934952/a1caa46b-383d-4134-954c-19e2b2cdd9a5)
