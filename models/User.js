@@ -6,7 +6,6 @@ class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
-
 }
 
 User.init(

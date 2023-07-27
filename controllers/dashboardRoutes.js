@@ -7,24 +7,23 @@ router.get('/', withAuth, (req, res) => {
     Blog.findAll({where: {user_id: req.session.user_id},
       
       attributes: ['id','title','description','date_created'],
-      // include: [
-      //   {
-      //     model: Comment,
-      //     attributes: ['id', 'description', 'blog_id', 'user_id', 'date_created'],
-      //     include: {
-      //       model: User,
-      //       attributes: ['username']
-      //     }
-      //   },
-      //   {
-      //     model: User,
-      //     attributes: ['username']
-      //   }
-      // ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'description', 'blog_id', 'user_id', 'date_created'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ],
     })
 
     .then(blogData => {
-      // console.log(user_id)
       const blogs = blogData.map(blog => blog.get({ plain: true }));
       res.render('dashboard', { blogs, logged_in: true });
     })

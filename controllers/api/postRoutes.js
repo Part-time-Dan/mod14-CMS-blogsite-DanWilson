@@ -16,6 +16,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+// delete existing blog post
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.destroy({
@@ -35,7 +36,5 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
 
 module.exports = router;

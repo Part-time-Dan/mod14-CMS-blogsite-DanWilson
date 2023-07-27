@@ -11,9 +11,6 @@
 
 <body>
 
-{{!-- WHEN I visit the site for the first time
-THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in --}}
-
   <header>
     <h1>MVC Bloggy</h1>
   </header>
@@ -34,10 +31,7 @@ THEN I am presented with the homepage, which includes existing blog posts if any
       <!-- Render the sub layout -->
       {{{ body }}}
   </main>
-  <footer>
-      
-  </footer>
-
+  
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
