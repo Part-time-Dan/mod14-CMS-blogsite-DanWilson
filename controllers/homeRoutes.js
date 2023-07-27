@@ -31,7 +31,6 @@ router.get('/', async (req, res) => {
 
 // 
 
-
 router.get('/blog/:id', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -59,52 +58,60 @@ router.get('/blog/:id', async (req, res) => {
 
 // 
 
+router.get('/dashboard', (req, res) => {
+  if (!req.session.logged_in) {
+    // If the user is not logged in, redirect to the 'choice' page
+    return res.redirect('/choice');
+  }
+  // If the user is logged in, render the dashboard template
+  Blog.findAll({
+    where: { user_id: req.session.user_id },
+    attributes: ['id', 'title', 'description', 'date_created'],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'description', 'blog_id', 'user_id', 'date_created'],
+        include: {
+          model: User,
+          attributes: ['username'],
+        },
+      },
+      {
+        model: User,
+        attributes: ['username'],
+      },
+    ],
+  })
+    .then((blogData) => {
+      const blogs = blogData.map((blog) => blog.get({ plain: true }));
+      res.render('dashboard', { blogs, logged_in: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Route for the login page
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
-    return;
+    // If the user is already logged in, redirect to the 'dashboard' page
+    return res.redirect('/dashboard');
   }
   res.render('login');
 });
 
+// Route for the signup page
 router.get('/signup', (req, res) => {
-  // If the user is new, redirect the request to signup
+  if (req.session.logged_in) {
+    return res.redirect('/dashboard');
+  }
   res.render('signup');
 });
 
-// 
-
-// redirect user not logged in
-router.get('/dashboard', (req, res) => {
-  // If the user is not logged in, render the dashboard choice page
-  if (!req.session.logged_in) {
-    return res.render('choice');
-  }
-  // If the user is logged in, render the actual dashboard page
-  return res.render('dashboard', { logged_in: true });
-});
-
-// 
-
-// Use withAuth middleware to prevent access to route
-router.get('/dashboard', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Blog }],
-    });
-
-    const user = userData.get({ plain: true });
-
-    res.render('dashboard', {
-      ...user,
-      logged_in: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+// Route for the 'choice' page
+router.get('/choice', (req, res) => {
+  res.render('choice');
 });
 
 module.exports = router;
