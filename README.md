@@ -2,7 +2,7 @@
 
 # MVC CMS Blogging Website
 
-[![Deployed](https://www.herokucdn.com/deploy/button.svg)](https://--stuff--goes--here--herokuapp.com/)
+[![Deployed](https://www.herokucdn.com/deploy/button.svg)](https://dw-mvc-bloggy-ptd-0f7d5a1fecf6.herokuapp.com/)
 
 Model View Controller routing front and back end using Handlebars, Express.js, MySQL and Sequelize to create a content management system style blog.
 
@@ -64,7 +64,7 @@ For additional license information, please follow the link: [MIT](https://choose
 
 ## Link
 
-[Heroku Deployment](https://dw-notetaker-app-ptd-fbb4773f5a25.herokuapp.com/)
+[Heroku Deployment](https://dw-mvc-bloggy-ptd-0f7d5a1fecf6.herokuapp.com/)
 
 
 [Image-here](take-screenshot-of-Heroku-deployment)
