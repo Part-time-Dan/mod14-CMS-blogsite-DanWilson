@@ -1,0 +1,29 @@
+<h1>Dashboard</h1>
+
+<div class="container">
+    <form class="post-blog-form">
+        <div>
+            <label class="form-label" for="title">Title</label>
+            <input class="form-control" type="text" id="blog-name" name="title" />
+        </div>
+        <div>
+            <label for="content">Content</label>
+            <div class="form-group">
+                <textarea class="form-control" name="contents" id="blog-desc"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Post!</button>
+    </form>
+</div>
+
+<div class="blogpost-list">
+  {{#each blogs as |blog| }}
+
+  <ul>
+    {{> userblog}}
+  </ul>
+
+  {{/each}}
+</div>
+
+<script src="./js/postBlog.js"></script>
