@@ -18,6 +18,12 @@ const blogContent = [
       "description": "Still blogging!",
       "date_created": "6/30/2023",
       "user_id": 3,
+    },
+    {
+      "title": "Don't give up",
+      "description": "It's dangerous to code alone",
+      "date_created": "7/22/2023",
+      "user_id": 2,
     }
 ]
 
