@@ -31,6 +31,7 @@ router.get('/', async (req, res) => {
 
 // 
 
+
 router.get('/blog/:id', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -64,9 +65,27 @@ router.get('/login', (req, res) => {
     res.redirect('/dashboard');
     return;
   }
-
   res.render('login');
 });
+
+router.get('/signup', (req, res) => {
+  // If the user is new, redirect the request to signup
+  res.render('signup');
+});
+
+// 
+
+// redirect user not logged in
+router.get('/dashboard', (req, res) => {
+  // If the user is not logged in, render the dashboard choice page
+  if (!req.session.logged_in) {
+    return res.render('choice');
+  }
+  // If the user is logged in, render the actual dashboard page
+  return res.render('dashboard', { logged_in: true });
+});
+
+// 
 
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
