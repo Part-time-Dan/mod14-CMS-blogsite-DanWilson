@@ -28,7 +28,6 @@ router.post('/login', async (req, res) => {
     const userData = await User.findOne({ where: { username: req.body.username } });
 
     if (!userData) {
-      console.log('USERDATA', userData)
       res
         .status(400)
         .json({ message: 'Incorrect username, please try again' });
@@ -39,8 +38,6 @@ router.post('/login', async (req, res) => {
     const validPassword = userData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      console.log('USERDATA', userData)
-      console.log(validPassword)
       res
         .status(400)
         .json({ message: 'Incorrect password, please try again' });
