@@ -69,4 +69,5 @@ For additional license information, please follow the link: [MIT](https://choose
 
 ![mod14-homepage](https://github.com/Part-time-Dan/mod14-CMS-blogsite-DanWilson/assets/126934952/62c21a69-c712-4950-89ea-5b8335785d99)
 
-![mod14-dashboard](https://github.com/Part-time-Dan/mod14-CMS-blogsite-DanWilson/assets/126934952/a1caa46b-383d-4134-954c-19e2b2cdd9a5)
+![mod14-dashboard](https://github.com/Part-time-Dan/mod14-CMS-blogsite-DanWilson/assets/126934952/7761859c-16cb-4507-bd04-fb03546adbd1)
+
