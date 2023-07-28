@@ -1,29 +1,46 @@
-<h1>Dashboard</h1>
-
-<div class="container">
-    <form class="post-blog-form">
-        <div>
-            <label class="form-label" for="title">Title</label>
-            <input class="form-control" type="text" id="blog-name" name="title" />
-        </div>
-        <div>
-            <label for="content">Content</label>
-            <div class="form-group">
-                <textarea class="form-control" name="contents" id="blog-desc"></textarea>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Post!</button>
-    </form>
+<div>
+    <div>
+        <h2>Hiya, {{username}}!</h2>
+    </div>
+    <div>
+        <h3>Welcome to Your Dashboard</h3>
+    </div>
 </div>
 
-<div class="blogpost-list">
-  {{#each blogs as |blog| }}
 
-  <ul>
-    {{> userblog}}
-  </ul>
+<div class="row">
+    <div>
+        <div class="container">
+            <form class="post-blog-form">
+                <div>
+                    <label class="form-group" for="title">Title</label>
+                    <input class="form-control" type="text" id="blog-name" name="title" />
+                </div>
+                <div>
+                    <label for="content">Content</label>
+                    <div class="form-group">
+                        <textarea class="form-input" name="contents" id="blog-desc"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Post!</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-  {{/each}}
+
+    {{#if blogs.length}}
+    <div class="blogpost-list">
+    {{#each blogs as |blog| }}
+
+    <ul>
+        {{> userblog}}
+    </ul>
+
+    {{/each}}
+    </div>
+    {{/if}}
 </div>
 
 <script src="./js/postBlog.js"></script>
