@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     // Get all blogs and render on homepage without Auth
     const blogData = await Blog.findAll({
-      attributes: [ 'id', 'title', 'date_created'],
+      attributes: [ 'id', 'title', 'date_created', 'description'],
       include: [
         {
           model: User,

@@ -1,7 +1,9 @@
 <div class="card">
     <header>
         <h3>{{title}}</h3>
-        <h4>Posted by {{user.username}} on {{format_date date_created}}</h4>
+        <p style="font-weight: bold">Posted by {{user.username}} on {{format_date date_created}}</p>
     </header>
-    <body>{{description}}</body>
+    <div>
+        <p>{{description}}</p>
+    </div>
 </div>

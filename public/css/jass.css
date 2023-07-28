@@ -1081,8 +1081,10 @@ a:hover {
 }
 
 .card {
-  border: 1px solid #1a1a1a;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
   margin-bottom: 1rem;
+  box-shadow: 4px 8px 12px rgb(177, 177, 177);
 }
 
 .card .card-header {
